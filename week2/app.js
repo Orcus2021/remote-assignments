@@ -1,17 +1,18 @@
 function max(numbers) {
-  let max = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i] > max) {
-      max = numbers[i];
+  let maxNum = numbers[0];
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] > maxNum) {
+      maxNum = numbers[i];
     }
   }
-  return max;
+  return maxNum;
 }
-// let a = max([5, 2, 7, 1, 6]);
+// let a = max([-1, -2, -7, -1, -10]);
 // console.log(a);
+
 function calculate(args) {
   let a;
-  let { n1, n2, op } = args;
+  const { n1, n2, op } = args;
   if (op === "+") {
     a = n1 + n2;
     return a;
@@ -32,24 +33,25 @@ function calculate(args) {
 // let a = calculate({ n1: 1, n2: 6, op: "x" }); // result to 5
 // console.log(a);
 
-function calculate(data) {
-  let { discount, products } = data;
+function calculatePrice(data) {
+  const { discount, products } = data;
+  let totalPrice = 0;
   for (let i = 0; i < products.length; i++) {
-    let { price } = products[i];
-    products[i].price = price * (1 - discount);
+    const { price } = products[i];
+    totalPrice += price * (1 - discount);
   }
-  return products;
+  return totalPrice;
 }
-// let a = calculate({
+// let a = calculatePrice({
 //   discount: 0.1,
 //   products: [
 //     {
 //       name: "Product 1",
-//       price: 100,
+//       price: 200,
 //     },
 //     {
 //       name: "Product 2",
-//       price: 700,
+//       price: 500,
 //     },
 //     {
 //       name: "Product 3",
@@ -66,7 +68,7 @@ function twoSum(nums, target) {
     for (let i = 0; i < nums.length; i++) {
       let n1 = nums[j];
       let n2 = nums[i];
-      let result = n1 + n2;
+      const result = n1 + n2;
 
       if (j !== i && result === target) {
         array = [j, i];
@@ -75,7 +77,7 @@ function twoSum(nums, target) {
     }
   }
 }
-// let a = twoSum([2, 7, 11, 15], 26);
+// let a = twoSum([2, 7, 9, 11, 15], 24);
 // console.log(a);
 
 // ------------website js--------------------
