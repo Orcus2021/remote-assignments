@@ -11,30 +11,19 @@ async function transfer() {
     show.textContent = `${data.message}`;
   } catch (error) {
     show.textContent = `${error}`;
-    console.log(error);
   }
-
-  // fetchData(url)
-  //   .then((res) => {
-  //     show.textContent = `${res.message}`;
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //     show.textContent = `Error:${error.message}`;
-  //   });
 }
 
-function postName() {
+async function postName() {
   const input = document.querySelector("#name");
-  const url = `trackName?name=${input.value}`;
-  fetchData(url)
-    .then((res) => {
-      alert(res.message);
-      location.replace("http://localhost:3000/myName");
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  const url = `trackNam?name=${input.value}`;
+  try {
+    const data = await fetchData(url);
+    alert(data.message);
+    location.replace("http://localhost:3000/myName");
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function fetchData(url) {
