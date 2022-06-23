@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const path = require("path");
-var cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
 
 app.use(express.static("public"));
 app.use(cookieParser());

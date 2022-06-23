@@ -1,22 +1,32 @@
-function transfer() {
+async function transfer() {
   const show = document.querySelector(".show p");
   const input = document.querySelector("#sum");
   show.textContent = "Loading...";
 
-  let url = `getData?number=${input.value}`;
+  const url = `getData?number=${input.value}`;
 
-  fetchData(url)
-    .then((res) => {
-      show.textContent = `${res.message}`;
-    })
-    .catch((error) => {
-      show.textContent = `Error:${error}`;
-    });
+  try {
+    const data = await fetchData(url);
+    console.log(data.message);
+    show.textContent = `${data.message}`;
+  } catch (error) {
+    show.textContent = `${error}`;
+    console.log(error);
+  }
+
+  // fetchData(url)
+  //   .then((res) => {
+  //     show.textContent = `${res.message}`;
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //     show.textContent = `Error:${error.message}`;
+  //   });
 }
 
 function postName() {
   const input = document.querySelector("#name");
-  let url = `trackName?name=${input.value}`;
+  const url = `trackName?name=${input.value}`;
   fetchData(url)
     .then((res) => {
       alert(res.message);
@@ -28,9 +38,10 @@ function postName() {
 }
 
 async function fetchData(url) {
-  let res = await fetch(`http://localhost:3000/${url}`);
-  let parseData = await res.json();
+  const res = await fetch(`http://localhost:3000/${url}`);
+
   if (res.ok) {
+    const parseData = await res.json();
     return parseData;
   }
   throw new Error("Something Wrong");
