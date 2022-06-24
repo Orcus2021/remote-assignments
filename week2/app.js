@@ -63,26 +63,17 @@ function calculatePrice(data) {
 
 function twoSum(nums, target) {
   let array = [];
+  for (let i = 0; i < nums.length; i++) {
+    const subNum = target - nums[i];
 
-  // for (let j = 0; j < nums.length; j++) {
-  //   for (let i = 0; i < nums.length; i++) {
-  //     let n1 = nums[j];
-  //     let n2 = nums[i];
-  //     const result = n1 + n2;
-
-  //     if (j !== i && result === target) {
-  //       array = [j, i];
-  //       return array;
-  //     }
-  //   }
-  // }
-
-  // for(let i=0;i<nums.length;i++){
-  //   nums[i]+
-
-  // }
+    const index = nums.indexOf(subNum);
+    if (index !== -1 && index !== i) {
+      array = [i, index];
+      return array;
+    }
+  }
 }
-// let a = twoSum([2, 7, 9, 11, 15], 24);
+// let a = twoSum([2, 7, 9, 11, 15, 7], 14);
 // console.log(a);
 
 // ------------website js--------------------
