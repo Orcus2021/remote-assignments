@@ -1,5 +1,16 @@
 import React, { useState } from "react";
-
+const dataArr1 = [
+  "Content Box 1",
+  "Content Box 2",
+  "Content Box 3",
+  "Content Box 4",
+];
+const dataArr2 = [
+  "Content Box 5",
+  "Content Box 6",
+  "Content Box 7",
+  "Content Box 8",
+];
 const Main = () => {
   const [showContent, setShowContent] = useState(false);
   const contentHandler = () => {
@@ -10,20 +21,26 @@ const Main = () => {
     <main>
       <h2>Section title</h2>
       <div className="container1">
-        <div className="content1">Content Box 1</div>
-        <div className="content2">Content Box 2</div>
-        <div className="content3">Content Box 3</div>
-        <div className="content4">Content Box 4</div>
+        {dataArr1.map((data, index) => {
+          return (
+            <div key={index} className={`content${index + 1}`}>
+              {data}
+            </div>
+          );
+        })}
       </div>
       <div className="action">
         <button onClick={contentHandler}>Call to Action</button>
       </div>
       {showContent && (
         <div className="container2">
-          <div className="content1">Content Box 5</div>
-          <div className="content2">Content Box 6</div>
-          <div className="content3">Content Box 7</div>
-          <div className="content4">Content Box 8</div>
+          {dataArr2.map((data, index) => {
+            return (
+              <div key={index} className={`content${index + 1}`}>
+                {data}
+              </div>
+            );
+          })}
         </div>
       )}
     </main>

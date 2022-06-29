@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+const dataArr = ["Item1", "Item2", "Item3", "Item4"];
 const Header = () => {
   const [banner, setBanner] = useState("Welcome Message");
   const [showMenu, setShowMenu] = useState(false);
@@ -23,10 +23,9 @@ const Header = () => {
           <li id="closeMenu" onClick={menuToggle}>
             <i className="ri-close-line"></i>
           </li>
-          <li>Item1</li>
-          <li>Item2</li>
-          <li>Item3</li>
-          <li>Item4</li>
+          {dataArr.map((data, index) => (
+            <li key={index}>{data}</li>
+          ))}
         </ul>
       </nav>
       <div className="banner" onClick={changeBanner}>
